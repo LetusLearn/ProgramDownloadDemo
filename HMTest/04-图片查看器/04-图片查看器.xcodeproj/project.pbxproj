@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048BB2931B456B0D003ACCDD /* imageList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 048BB2921B456B0D003ACCDD /* imageList.plist */; };
 		04A444DF1B42DADD008B18F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A444DE1B42DADD008B18F4 /* main.m */; };
 		04A444E21B42DADD008B18F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A444E11B42DADD008B18F4 /* AppDelegate.m */; };
 		04A444E51B42DADD008B18F4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A444E41B42DADD008B18F4 /* ViewController.m */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048BB2921B456B0D003ACCDD /* imageList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = imageList.plist; sourceTree = "<group>"; };
 		04A444D91B42DADD008B18F4 /* 04-图片查看器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "04-图片查看器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A444DD1B42DADD008B18F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A444DE1B42DADD008B18F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				04A444E01B42DADD008B18F4 /* AppDelegate.h */,
+				048BB2921B456B0D003ACCDD /* imageList.plist */,
 				04A444E11B42DADD008B18F4 /* AppDelegate.m */,
 				04A444E31B42DADD008B18F4 /* ViewController.h */,
 				04A444E41B42DADD008B18F4 /* ViewController.m */,
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048BB2931B456B0D003ACCDD /* imageList.plist in Resources */,
 				04A444E81B42DADD008B18F4 /* Main.storyboard in Resources */,
 				04A444ED1B42DADD008B18F4 /* LaunchScreen.xib in Resources */,
 				04A444EA1B42DADD008B18F4 /* Images.xcassets in Resources */,
@@ -412,6 +416,7 @@
 				04A444FE1B42DADD008B18F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A444FF1B42DADD008B18F4 /* Build configuration list for PBXNativeTarget "04-图片查看器Tests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +425,7 @@
 				04A445011B42DADD008B18F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

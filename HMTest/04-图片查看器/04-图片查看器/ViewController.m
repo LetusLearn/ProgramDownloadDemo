@@ -22,6 +22,8 @@
 @property(nonatomic,strong) UILabel *descLabel;//描述
 @property(nonatomic,strong) UIButton *leftButton;
 @property(nonatomic,strong) UIButton *rightButton;
+@property(nonatomic,strong) NSArray *imageList;
+//@property(nonatomic,strong) Person
 /*
  当前所显示的照片索引
  */
@@ -29,11 +31,24 @@
 @end
 
 @implementation ViewController
+#pragma mark - 控件懒加载
+-(NSArray *)imageList{
+    NSLog(@"读取图像信息");
+    if (_imageList ==nil) {
+        //遇到contentsOfFile 需要完整的路径。
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"imageLisst" ofType:@"plist"];
+        NSLog(@"%@",path);
+        _imageList = [NSArray arrayWithContentsOfFile:path];
+        
+    }
+    return _imageList;
+}
 /*在viewDidLoad创建界面*/
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self imageList];
     //1.序号
-    self.noLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 40)];
+    _noLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 40)];
 //    self.noLabel.text=@"1/5";
     self.noLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.noLabel];
@@ -161,32 +176,34 @@
 
 -(void)showPhotoInfo{
     self.noLabel.text = [NSString stringWithFormat:@"%d/%d",self.index+1,5];
-    switch (self.index) {
-        case 0:
-            self.iconImage.image =[UIImage imageNamed:@"biaoqingdi"];
-            self.descLabel.text = @"表情帝";
-            break;
-            
-        case 1:
-            self.iconImage.image =[UIImage imageNamed:@"bingli"];
-            self.descLabel.text = @"病例";
-            break;
-            
-        case 2:
-            self.iconImage.image =[UIImage imageNamed:@"chiniupa"];
-            self.descLabel.text = @"吃牛扒";
-            break;
-            
-        case 3:
-            self.iconImage.image =[UIImage imageNamed:@"danteng"];
-            self.descLabel.text = @"蛋疼";
-            break;
-            
-        case 4:
-            self.iconImage.image =[UIImage imageNamed:@"wangba"];
-            self.descLabel.text = @"王八";
-            break;
-    }
+    _iconImage.image=[UIImage imageNamed:self.imageList[self.index][@"name"]];
+    _descLabel.text = _imageList[self.index][@"desc"];
+//    switch (self.index) {
+//        case 0:
+//            self.iconImage.image =[UIImage imageNamed:@"biaoqingdi"];
+//            self.descLabel.text = @"表情帝";
+//            break;
+//            
+//        case 1:
+//            self.iconImage.image =[UIImage imageNamed:@"bingli"];
+//            self.descLabel.text = @"病例";
+//            break;
+//            
+//        case 2:
+//            self.iconImage.image =[UIImage imageNamed:@"chiniupa"];
+//            self.descLabel.text = @"吃牛扒";
+//            break;
+//            
+//        case 3:
+//            self.iconImage.image =[UIImage imageNamed:@"danteng"];
+//            self.descLabel.text = @"蛋疼";
+//            break;
+//            
+//        case 4:
+//            self.iconImage.image =[UIImage imageNamed:@"wangba"];
+//            self.descLabel.text = @"王八";
+//            break;
+//    }
     //按钮状态
     self.leftButton.enabled = (self.index!=0);
     self.rightButton.enabled = (self.index!=4);
@@ -195,8 +212,6 @@
 -(void)clickButton:(UIButton *)button{
     self.index += (int)button.tag;
     [self showPhotoInfo];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
