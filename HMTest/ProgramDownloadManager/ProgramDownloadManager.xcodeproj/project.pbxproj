@@ -14,6 +14,7 @@
 		048384641B46249C000489B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048384631B46249C000489B8 /* Images.xcassets */; };
 		048384671B46249C000489B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048384651B46249C000489B8 /* LaunchScreen.xib */; };
 		048384731B46249C000489B8 /* ProgramDownloadManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 048384721B46249C000489B8 /* ProgramDownloadManagerTests.m */; };
+		0483847F1B46557B000489B8 /* app.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0483847E1B46557B000489B8 /* app.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		0483846C1B46249C000489B8 /* ProgramDownloadManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProgramDownloadManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		048384711B46249C000489B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		048384721B46249C000489B8 /* ProgramDownloadManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramDownloadManagerTests.m; sourceTree = "<group>"; };
+		0483847E1B46557B000489B8 /* app.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = app.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		048384561B46249C000489B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0483847E1B46557B000489B8 /* app.plist */,
 				048384571B46249C000489B8 /* Info.plist */,
 				048384581B46249C000489B8 /* main.m */,
 			);
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0483847F1B46557B000489B8 /* app.plist in Resources */,
 				048384621B46249C000489B8 /* Main.storyboard in Resources */,
 				048384671B46249C000489B8 /* LaunchScreen.xib in Resources */,
 				048384641B46249C000489B8 /* Images.xcassets in Resources */,
