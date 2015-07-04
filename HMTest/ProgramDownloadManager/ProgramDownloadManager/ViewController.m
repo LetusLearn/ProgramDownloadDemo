@@ -50,7 +50,7 @@
     //320-3*80=80/4=20
     CGFloat marginX = (self.view.bounds.size.width - kColCount*kAppViewW)/(kColCount + 1);
     CGFloat marginY = 10;
-    for (int i =0; i<12; i++) {
+    for (int i =0; i<self.appList.count; i++) {
         //有行和列
         //行
         //0,1,2=>0
@@ -69,7 +69,7 @@
 //        appView.backgroundColor = [UIColor redColor];
         [self.view addSubview:appView];
         
-        //实现细节
+                //实现细节
 //        NSDictionary *dict = self.appList[i];//这里不能用_applist[i];
         AppInfo *appInfo = self.appList[i]; //转了之后这样用
         
@@ -111,9 +111,50 @@
 //        button.backgroundColor = [UIColor yellowColor];
         
         [appView addSubview:button];
+        //给按钮添加监听方法
+        button.tag = i;
+        [button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
 }
+-(void)click:(UIButton *)button{
+    NSLog(@"%s %d",__func__,button.tag);
+    //取出appinfo
+    AppInfo *appInfo = self.appList[button.tag];
+    //添加一个UILabel
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(80, 400, 160, 40)];
+    //数值是0表示黑色 1表示白色
+    //alpha 表示透明度
+    [label setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.2]];
 
+    label.text = appInfo.name;
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
+    //动画效果
+    //首尾式动画，修改对象的属性，frame、bounds、alpha
+    label.alpha = 0.0;
+    //禁用按钮
+    button.enabled = NO;
+    //动画结束之后删除
+    //^表示block 块代码，是一个预先准备好的代码，可以当做参数传递 在需要的时候
+    //块代码在OC用的非常普遍
+    [UIView animateWithDuration:2.0f animations:^{
+        //要修改的动画属性
+        label.alpha = 1.0;
+        [UIView animateWithDuration:2.0f animations:^{
+            label.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            //动画完成后所做的操作
+            [label removeFromSuperview];
+        }];
+    }];
+    //收尾式动画不容易监听动画完成时间。
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:1.0f];
+//    label.alpha =1.0;
+//    [UIView commitAnimations];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
