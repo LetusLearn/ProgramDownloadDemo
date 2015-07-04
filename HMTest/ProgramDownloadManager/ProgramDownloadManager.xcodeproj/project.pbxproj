@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0457D3701B4789190024E1EC /* AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0457D36F1B4789190024E1EC /* AppInfo.m */; };
 		048384591B46249C000489B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 048384581B46249C000489B8 /* main.m */; };
 		0483845C1B46249C000489B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0483845B1B46249C000489B8 /* AppDelegate.m */; };
 		0483845F1B46249C000489B8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0483845E1B46249C000489B8 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0457D36E1B4789190024E1EC /* AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfo.h; sourceTree = "<group>"; };
+		0457D36F1B4789190024E1EC /* AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfo.m; sourceTree = "<group>"; };
 		048384531B46249C000489B8 /* ProgramDownloadManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgramDownloadManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048384571B46249C000489B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		048384581B46249C000489B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 				048384631B46249C000489B8 /* Images.xcassets */,
 				048384651B46249C000489B8 /* LaunchScreen.xib */,
 				048384561B46249C000489B8 /* Supporting Files */,
+				0457D36E1B4789190024E1EC /* AppInfo.h */,
+				0457D36F1B4789190024E1EC /* AppInfo.m */,
 			);
 			path = ProgramDownloadManager;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0483845F1B46249C000489B8 /* ViewController.m in Sources */,
+				0457D3701B4789190024E1EC /* AppInfo.m in Sources */,
 				0483845C1B46249C000489B8 /* AppDelegate.m in Sources */,
 				048384591B46249C000489B8 /* main.m in Sources */,
 			);
@@ -416,6 +422,7 @@
 				048384781B46249C000489B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		048384791B46249C000489B8 /* Build configuration list for PBXNativeTarget "ProgramDownloadManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +431,7 @@
 				0483847B1B46249C000489B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

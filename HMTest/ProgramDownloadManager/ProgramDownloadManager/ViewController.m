@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppInfo.h"
 
 @interface ViewController ()
 @property (nonatomic,strong)NSArray *appList;
@@ -16,7 +17,19 @@
 
 -(NSArray *)appList{
     if (_appList ==nil) {
-        _appList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"app.plist" ofType:nil]];
+        //appList保存的是字典  现在把它变为模型
+//        _appList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"app.plist" ofType:nil]];
+        NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"app.plist" ofType:nil]];
+        NSMutableArray *arrayM = [NSMutableArray array];
+        //遍历数组，依次转换模型
+        for (NSDictionary *dict in array) {
+            AppInfo *appInfo = [[AppInfo alloc]init];
+            appInfo.name = dict[@"name"];
+            appInfo.icon = dict[@"icon"];
+            [arrayM addObject:appInfo];
+        }
+        //将临时数组为属性赋值
+        _appList = arrayM;
     }
     return _appList;
 }
@@ -51,13 +64,15 @@
         [self.view addSubview:appView];
         
         //实现细节
-        NSDictionary *dict = self.appList[i];//这里不能用_applist[i];
+//        NSDictionary *dict = self.appList[i];//这里不能用_applist[i];
+        AppInfo *appInfo = self.appList[i]; //转了之后这样用
         
         //1>UIImageView
         UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kAppViewW, 50)];
 //        icon.backgroundColor = [UIColor greenColor];
         //设置图像
-        icon.image = [UIImage imageNamed:dict[@"icon"]];
+//        icon.image = [UIImage imageNamed:dict[@"icon"]];
+        icon.image = [UIImage imageNamed:appInfo.icon];
         //设置图像填充模式
         icon.contentMode = UIViewContentModeScaleAspectFit;//等比例显示
         [appView addSubview:icon];
@@ -67,7 +82,8 @@
 //        CGRectGetMaxY(frame) 其实上等同于 frame.orign.y + frame.size.height
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(icon.frame), kAppViewW, 20)];
 //        label.backgroundColor = [UIColor blueColor];
-        label.text = dict[@"name"];
+//        label.text = dict[@"name"];
+        label.text = appInfo.name;// 转了之后这样用
         //设置字体
         label.font = [UIFont systemFontOfSize:13.0];
         label.textAlignment = NSTextAlignmentCenter;
@@ -89,8 +105,6 @@
         
         [appView addSubview:button];
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
