@@ -17,19 +17,25 @@
 
 -(NSArray *)appList{
     if (_appList ==nil) {
+/**使用了类方法
         //appList保存的是字典  现在把它变为模型
 //        _appList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"app.plist" ofType:nil]];
         NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"app.plist" ofType:nil]];
         NSMutableArray *arrayM = [NSMutableArray array];
         //遍历数组，依次转换模型
         for (NSDictionary *dict in array) {
-            AppInfo *appInfo = [[AppInfo alloc]init];
-            appInfo.name = dict[@"name"];
-            appInfo.icon = dict[@"icon"];
+            //类方法可以快速实例化一个对象
+            //有了.h的initWithDict方法 就不需要下面这个了
+//            AppInfo *appInfo = [[AppInfo alloc]init];
+//            AppInfo *appInfo = [[AppInfo alloc]initWithDict:dict]; //用下面的方法
+            AppInfo *appInfo = [AppInfo appInfoWithDict:dict];
+//            appInfo.name = dict[@"name"];
+//            appInfo.icon = dict[@"icon"];
             [arrayM addObject:appInfo];
         }
+*/
         //将临时数组为属性赋值
-        _appList = arrayM;
+        _appList = [AppInfo appList];
     }
     return _appList;
 }
@@ -73,6 +79,7 @@
         //设置图像
 //        icon.image = [UIImage imageNamed:dict[@"icon"]];
         icon.image = [UIImage imageNamed:appInfo.icon];
+        
         //设置图像填充模式
         icon.contentMode = UIViewContentModeScaleAspectFit;//等比例显示
         [appView addSubview:icon];
